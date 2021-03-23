@@ -1,0 +1,44 @@
+<link href="https://napoleon.com.br/whatslink/css/style.css" rel="stylesheet" />
+
+<div id="app"> 
+  
+<div class="col-half flex-center">
+  
+<div class="box-mensagem box-mensagem--error" v-if="mensagemError">
+        {{ mensagemError }}
+      </div>    
+
+      <form class="form" @submit="event.preventDefault()" v-if="!sucessForm">
+        <div class="form__control">
+          <label for="numero" class="form__label">n° do celular</label>
+          <input type="text" placeholder="(99) 9 9999-9999" class="form__input form-control" id="numero" v-model="numero" @keyup="validaNumero" />
+
+        </div>
+
+        <div class="form__control">
+          <label for="mensagem" class="form__label">mensagem</label>
+          <input type="text" placeholder="escreva sua mensagem" class="form__input form-control" id="mensagem" v-model="mensagem"/>
+        </div>
+
+        <button type="submit" class="form__submit btn btn-primary" @click="gerarLink">gerar link</button>
+      </form>
+
+      <div class="box-mensagem" v-if="sucessForm">
+        <p><strong>Pronto!</strong> Clique no botão “COPIAR LINK” e compartilhe este link!</p>    
+
+        <div class="box-input form form--inline">
+          <input type="text" class="form__input form__input--text form-control" v-model="link" />
+
+          <button class="form__submit form__input--copy btn btn-primary " @click="copiarLink">copiar link</button>
+          <button class="form__submit form__input--copy btn btn-primary " onClick="window.location.reload()">gerar novo</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://napoleon.com.br/whatslink/js/vue.min.js"></script> 
+  <script src="https://napoleon.com.br/whatslink/js/axios.min.js"></script>  
+  <script src="https://napoleon.com.br/whatslink/js/mask.min.js"></script>
+  <script src="https://napoleon.com.br/whatslink/js/main.min.js"></script>
+
